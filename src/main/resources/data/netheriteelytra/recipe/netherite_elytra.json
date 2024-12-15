@@ -1,16 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "minecraft:netherite_ingot"
-  },
-  "base": {
-    "item": "minecraft:elytra"
-  },
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "minecraft:elytra",
+  "addition": "minecraft:netherite_ingot",
   "result": {
-    "count": 1,
     "id": "netheriteelytra:netherite_elytra"
-  },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
   }
 }
