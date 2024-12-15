@@ -37,6 +37,7 @@ public class ModItems {
     public static final Item NETHERITE_ELYTRA = registerItem("netherite_elytra", new Item (new Item.Settings()
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(NetheriteElytra.MOD_ID, "netherite_elytra")))
             .maxDamage(432)
+            .fireproof()
             .rarity(Rarity.EPIC)
             .component(DataComponentTypes.GLIDER, Unit.INSTANCE)
             .component(
