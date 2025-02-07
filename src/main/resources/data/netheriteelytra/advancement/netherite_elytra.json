@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:nether/obtain_ancient_debris",
+  "criteria": {
+    "netherite_elytra": {
+      "conditions": {
+        "items": [
+          {
+            "items": "netheriteelytra:netherite_elytra"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nether.netherite_elytra.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "netheriteelytra:netherite_elytra"
+    },
+    "title": {
+      "translate": "advancements.nether.netherite_elytra.title"
+    }
+  },
+  "requirements": [
+    [
+      "netherite_elytra"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

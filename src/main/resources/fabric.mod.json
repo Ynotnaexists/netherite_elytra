@@ -19,7 +19,7 @@
 			"ynotnaexists.netheriteelytra.NetheriteElytra"
 		],
 		"client": [
-			"ynotnaexists.netheriteelytra.NetheriteElytraClient"
+
 		]
 	},
 	"mixins": [

@@ -2,7 +2,9 @@
 	"required": true,
 	"package": "ynotnaexists.netheriteelytra.mixin",
 	"compatibilityLevel": "JAVA_21",
-	"mixins": [],
+	"mixins": [
+		"SmithingBaseItemDisplayMixin"
+	],
 	"injectors": {
 		"defaultRequire": 0
 	}

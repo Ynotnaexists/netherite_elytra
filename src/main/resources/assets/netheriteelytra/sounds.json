@@ -1,0 +1,11 @@
+{
+  "equip_netherite_elytra": {
+    "subtitle": "sound.equip_netherite_elytra",
+    "sounds": [
+      "netheriteelytra:equip_netherite_elytra1",
+      "netheriteelytra:equip_netherite_elytra2",
+      "netheriteelytra:equip_netherite_elytra3",
+      "netheriteelytra:equip_netherite_elytra4"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_elytra": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:elytra"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_elytra"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "netheriteelytra:netherite_elytra"
+    ]
+  }
+}

@@ -1,3 +1,6 @@
 {
-  "item.netheriteelytra.netherite_elytra": "Netherite Elytra"
+  "item.netheriteelytra.netherite_elytra": "Netherite Elytra",
+  "advancements.nether.netherite_elytra.title": "Netherite Wings",
+  "advancements.nether.netherite_elytra.description": "Obtain a Netherite Elytra",
+  "sound.equip_netherite_elytra": "Netherite Elytra Rustles"
 }
