@@ -11,6 +11,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
+import net.minecraft.item.equipment.EquipmentAssetKeys;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -24,6 +25,7 @@ import net.minecraft.util.Unit;
 
 import static net.minecraft.item.Items.PHANTOM_MEMBRANE;
 import static net.minecraft.item.Items.register;
+import static net.minecraft.item.equipment.EquipmentAssetKeys.REGISTRY_KEY;
 
 public class ModItems {
     public static final Item NETHERITE_ELYTRA = registerItem("netherite_elytra", new Item (new Item.Settings()
@@ -35,7 +37,7 @@ public class ModItems {
             .component(
                     DataComponentTypes.EQUIPPABLE,
                     EquippableComponent.builder(EquipmentSlot.CHEST).equipSound(ModSoundEvents.ITEM_ARMOR_EQUIP_NETHERITE_ELYTRA)
-                    .model(Identifier.of("netheriteelytra", "netherite_elytra"))
+                    .model(RegistryKey.of(REGISTRY_KEY, Identifier.of("netheriteelytra", "netherite_elytra")))
                     .damageOnHurt(false).build()
             )
             .repairable(PHANTOM_MEMBRANE)

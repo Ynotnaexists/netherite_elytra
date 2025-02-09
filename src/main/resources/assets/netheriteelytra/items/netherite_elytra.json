@@ -1,0 +1,14 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:broken",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "netheriteelytra:item/netherite_elytra"
+    },
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "netheriteelytra:item/netherite_elytra_broken"
+    }
+  }
+}
