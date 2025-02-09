@@ -1,9 +1,0 @@
-{
-	"required": true,
-	"package": "ynotnaexists.netheriteelytra.mixin.client",
-	"compatibilityLevel": "JAVA_21",
-	"client": [],
-	"injectors": {
-		"defaultRequire": 0
-	}
-}
