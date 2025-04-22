@@ -11,6 +11,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
+import net.minecraft.item.equipment.EquipmentAsset;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -35,7 +36,10 @@ public class ModItems {
             .component(
                     DataComponentTypes.EQUIPPABLE,
                     EquippableComponent.builder(EquipmentSlot.CHEST).equipSound(ModSoundEvents.ITEM_ARMOR_EQUIP_NETHERITE_ELYTRA)
-                    .model(Identifier.of("netheriteelytra", "netherite_elytra"))
+                    .model(RegistryKey.of(
+                            RegistryKey.ofRegistry(
+                                    Identifier.of("netheriteelytra", "equipment_asset")),
+                            Identifier.of("netheriteelytra", "netherite_elytra")))
                     .damageOnHurt(false).build()
             )
             .repairable(PHANTOM_MEMBRANE)
