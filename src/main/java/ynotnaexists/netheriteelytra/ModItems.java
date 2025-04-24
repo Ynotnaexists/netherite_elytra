@@ -16,18 +16,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.Unit;
-
 import static net.minecraft.item.Items.PHANTOM_MEMBRANE;
-import static net.minecraft.item.Items.register;
 
 public class ModItems {
-    public static final Item NETHERITE_ELYTRA = registerItem("netherite_elytra", new Item (new Item.Settings()
+    public static final Item NETHERITE_ELYTRA = register("netherite_elytra", new Item (new Item.Settings()
             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(NetheriteElytra.MOD_ID, "netherite_elytra")))
             .maxDamage(532)
             .fireproof()
@@ -36,28 +31,27 @@ public class ModItems {
             .component(
                     DataComponentTypes.EQUIPPABLE,
                     EquippableComponent.builder(EquipmentSlot.CHEST).equipSound(ModSoundEvents.ITEM_ARMOR_EQUIP_NETHERITE_ELYTRA)
-                    .model(RegistryKey.of(
-                            RegistryKey.ofRegistry(
-                                    Identifier.of("netheriteelytra", "equipment_asset")),
-                            Identifier.of("netheriteelytra", "netherite_elytra")))
+                    .model(registerModel("netherite_elytra"))
                     .damageOnHurt(false).build()
             )
             .repairable(PHANTOM_MEMBRANE)
             .attributeModifiers(
                 AttributeModifiersComponent.builder().add(
                     EntityAttributes.KNOCKBACK_RESISTANCE,
-                    new EntityAttributeModifier(Identifier.of("netheriteelytra", "elytra.amor"),
+                    new EntityAttributeModifier(Identifier.of(NetheriteElytra.MOD_ID, "elytra.amor"),
                         0.1F, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.CHEST
                 ).build()
             )
         )
     );
 
-    private static Item registerItem(String name, Item item) {
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-            entries.addAfter(Items.ELYTRA, ModItems.NETHERITE_ELYTRA);
-        });
+    static RegistryKey<EquipmentAsset> registerModel(String name) {
+        return RegistryKey.of(RegistryKey.ofRegistry(Identifier.ofVanilla("equipment_asset")), Identifier.of(NetheriteElytra.MOD_ID, name));
+    }
+    private static Item register(String name, Item item) {
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.addAfter(Items.ELYTRA, ModItems.NETHERITE_ELYTRA));
         return Registry.register(Registries.ITEM, Identifier.of(NetheriteElytra.MOD_ID, name), item);
     }
+
     public static void registerClass() {}
 }
