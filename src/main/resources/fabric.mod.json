@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "netheriteelytra",
-	"version": "2.0",
+	"version": "2.1",
 	"name": "NetheriteElytra",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
@@ -26,8 +26,8 @@
 		"netheriteelytra.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.9",
-		"minecraft": "~1.21.3",
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.6",
 		"java": ">=21",
 		"fabric-api": "*"
 	},
