@@ -14,7 +14,7 @@ public class SmithingBaseItemDisplayMixin {
     @Inject(method = "getNetheriteUpgradeEmptyBaseSlotTextures", at = @At("RETURN"), cancellable = true)
     private static void injectElytraTexture(CallbackInfoReturnable<List<Identifier>> cir) {
         List<Identifier> modifiedList = new ArrayList<>(cir.getReturnValue());
-        modifiedList.add(Identifier.of("netheriteelytra", "item/empty_slot_netherite_elytra"));
+        modifiedList.add(Identifier.of("netheriteelytra", "elytra"));
         cir.setReturnValue(modifiedList);
     }
 }
