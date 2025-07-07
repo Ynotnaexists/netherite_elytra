@@ -1,17 +1,18 @@
 {
 	"schemaVersion": 1,
 	"id": "netheriteelytra",
-	"version": "2.1",
+	"version": "2.2",
+
 	"name": "NetheriteElytra",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"Ynotnaexists"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/netherite-elytra",
+		"sources": "https://github.com/Ynotnaexists/netherite_elytra"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/netheriteelytra/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -27,7 +28,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",
-		"minecraft": "~1.21.6",
+		"minecraft": "~1.21.7",
 		"java": ">=21",
 		"fabric-api": "*"
 	},
