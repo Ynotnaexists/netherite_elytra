@@ -30,7 +30,8 @@ public class ModItems {
             .component(DataComponentTypes.GLIDER, Unit.INSTANCE)
             .component(
                     DataComponentTypes.EQUIPPABLE,
-                    EquippableComponent.builder(EquipmentSlot.CHEST).equipSound(ModSoundEvents.ITEM_ARMOR_EQUIP_NETHERITE_ELYTRA)
+                    EquippableComponent.builder(EquipmentSlot.CHEST)
+                    .equipSound(ModSoundEvents.ITEM_ARMOR_EQUIP_NETHERITE_ELYTRA)
                     .model(registerModel("netherite_elytra"))
                     .damageOnHurt(false).build()
             )
