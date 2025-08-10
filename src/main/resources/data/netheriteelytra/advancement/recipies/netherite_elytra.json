@@ -6,7 +6,7 @@
       "conditions": {
         "items": [
           {
-            "item": "minecraft:elytra"
+            "items": ["minecraft:elytra"]
           }
         ]
       }
