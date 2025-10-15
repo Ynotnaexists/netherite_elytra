@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "netheriteelytra",
-	"version": "2.3",
+	"version": "2.4",
 
 	"name": "NetheriteElytra",
 	"description": "This is an example description! Tell everyone what your mod is about!",
@@ -28,7 +28,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",
-		"minecraft": ">=1.21.6, <=1.21.10",
+		"minecraft": ">=1.21.6 <=1.21.10",
 		"java": ">=21",
 		"fabric-api": "*"
 	},
