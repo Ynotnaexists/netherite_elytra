@@ -1,57 +1,65 @@
 package ynotnaexists.netheriteelytra;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.AttributeModifierSlot;
-import net.minecraft.component.type.AttributeModifiersComponent;
-import net.minecraft.component.type.EquippableComponent;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.Items;
-import net.minecraft.item.equipment.EquipmentAsset;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
+import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Unit;
-import static net.minecraft.item.Items.PHANTOM_MEMBRANE;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.equipment.EquipmentAsset;
+import net.minecraft.world.item.equipment.EquipmentAssets;
+import net.minecraft.world.item.equipment.Equippable;
+
+import java.util.function.Function;
+
+import static net.minecraft.world.item.Items.PHANTOM_MEMBRANE;
+import static ynotnaexists.netheriteelytra.NetheriteElytra.MOD_ID;
 
 public class ModItems {
-    public static final Item NETHERITE_ELYTRA = register("netherite_elytra", new Item (new Item.Settings()
-            .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(NetheriteElytra.MOD_ID, "netherite_elytra")))
-            .maxDamage(532)
-            .fireproof()
+    public static final Item NETHERITE_ELYTRA = registerItem("netherite_elytra", properties ->  new Item(properties
+            .durability(532)
+            .fireResistant()
             .rarity(Rarity.EPIC)
-            .component(DataComponentTypes.GLIDER, Unit.INSTANCE)
+            .component(DataComponents.GLIDER, Unit.INSTANCE)
             .component(
-                    DataComponentTypes.EQUIPPABLE,
-                    EquippableComponent.builder(EquipmentSlot.CHEST)
-                    .equipSound(ModSoundEvents.ITEM_ARMOR_EQUIP_NETHERITE_ELYTRA)
-                    .model(registerModel("netherite_elytra"))
-                    .damageOnHurt(false).build()
+                    DataComponents.EQUIPPABLE,
+                    Equippable.builder(EquipmentSlot.CHEST)
+                            .setEquipSound(ModSoundEvents.ITEM_ARMOR_EQUIP_NETHERITE_ELYTRA)
+                            .setAsset(registerModel("netherite_elytra"))
+                            .setDamageOnHurt(false)
+                            .build()
             )
             .repairable(PHANTOM_MEMBRANE)
-            .attributeModifiers(
-                AttributeModifiersComponent.builder().add(
-                    EntityAttributes.KNOCKBACK_RESISTANCE,
-                    new EntityAttributeModifier(Identifier.of(NetheriteElytra.MOD_ID, "elytra.amor"),
-                        0.1F, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.CHEST
+            .attributes(
+                ItemAttributeModifiers.builder().add(
+                    Attributes.KNOCKBACK_RESISTANCE,
+                    new AttributeModifier(
+                            Identifier.fromNamespaceAndPath(NetheriteElytra.MOD_ID, "elytra.amor"),
+                            0.1F,
+                            AttributeModifier.Operation.ADD_VALUE),
+                        EquipmentSlotGroup.CHEST
                 ).build()
             )
         )
     );
 
-    static RegistryKey<EquipmentAsset> registerModel(String name) {
-        return RegistryKey.of(RegistryKey.ofRegistry(Identifier.ofVanilla("equipment_asset")), Identifier.of(NetheriteElytra.MOD_ID, name));
+    static ResourceKey<EquipmentAsset> registerModel(String name) {
+        return ResourceKey.create(
+                EquipmentAssets.ELYTRA.registryKey(),
+                Identifier.fromNamespaceAndPath(NetheriteElytra.MOD_ID, name)
+        );
     }
-    private static Item register(String name, Item item) {
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.addAfter(Items.ELYTRA, ModItems.NETHERITE_ELYTRA));
-        return Registry.register(Registries.ITEM, Identifier.of(NetheriteElytra.MOD_ID, name), item);
+    private static Item registerItem(String name, Function<Item.Properties, Item> function) {
+        return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, name),
+                function.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MOD_ID, name)))));
     }
 
     public static void registerClass() {}

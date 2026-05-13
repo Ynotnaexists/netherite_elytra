@@ -1,18 +1,21 @@
 package ynotnaexists.netheriteelytra;
 
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.resources.ResourceKey;
 
 public class ModSoundEvents {
 
-    public static final RegistryEntry<SoundEvent> ITEM_ARMOR_EQUIP_NETHERITE_ELYTRA = registerSoundEvent("equip_netherite_elytra");
+    public static final Holder<SoundEvent> ITEM_ARMOR_EQUIP_NETHERITE_ELYTRA = registerSoundEvent("equip_netherite_elytra");
 
-    private static RegistryEntry.Reference<SoundEvent> registerSoundEvent(String name) {
-        Identifier id = Identifier.of(NetheriteElytra.MOD_ID, name);
-        return Registry.registerReference(Registries.SOUND_EVENT, id, SoundEvent.of(id));
+    private static Holder.Reference<SoundEvent> registerSoundEvent(String name) {
+        Identifier id = Identifier.fromNamespaceAndPath(NetheriteElytra.MOD_ID, name);
+        return Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, id, SoundEvent.createFixedRangeEvent(id, 16.0F));
     }
+
     public static void registerClass() {}
 }
